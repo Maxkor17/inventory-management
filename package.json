@@ -1,0 +1,35 @@
+{
+  "name": "inventory-management",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "IT Asset Management System (static, client-side, GitHub Pages)",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:e2e": "node tests/e2e/run.mjs",
+    "test:all": "npm test && npm run build && npm run test:e2e"
+  },
+  "dependencies": {
+    "@preact/signals": "^2.11.4",
+    "idb": "^8.0.4",
+    "lucide-preact": "^1.73.0",
+    "preact": "^11.2.0"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.6",
+    "@types/node": "^26.6.6",
+    "fake-indexeddb": "^6.2.8",
+    "playwright-core": "^1.65.1",
+    "sass": "^1.108.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.0"
+  }
+}

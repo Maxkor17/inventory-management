@@ -1,0 +1,21 @@
+@use '../abstracts/tokens' as *;
+@use '../abstracts/mixins' as *;
+
+// Light is the default. `data-theme="dark"` forces dark; `data-theme="system"`
+// (the default) follows the operating system preference.
+:root {
+  @include emit-theme($light);
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  @include emit-theme($dark);
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme='system'] {
+    @include emit-theme($dark);
+    color-scheme: dark;
+  }
+}

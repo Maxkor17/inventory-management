@@ -1,0 +1,47 @@
+@use 'sass:map';
+@use 'tokens' as *;
+
+/// Breakpoint helpers: `@include up(md)` / `@include down(md)`
+@mixin up($key) {
+  @media (min-width: map.get($breakpoints, $key)) { @content; }
+}
+@mixin down($key) {
+  @media (max-width: map.get($breakpoints, $key) - 1px) { @content; }
+}
+
+@mixin focus-ring {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/// Emits a colour map as CSS custom properties.
+@mixin emit-theme($map) {
+  @each $name, $value in $map {
+    --#{$name}: #{$value};
+  }
+}
+
+@mixin card-surface {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: radius(lg);
+  box-shadow: var(--shadow-sm);
+}

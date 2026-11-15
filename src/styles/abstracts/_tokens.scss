@@ -1,0 +1,94 @@
+@use 'sass:map';
+
+// ── Design tokens ────────────────────────────────────────────────────────────
+// Colours live in two maps (light / dark) that are emitted as CSS custom
+// properties, so components only ever reference `var(--token)` and themes are
+// switched at runtime without recompiling anything.
+
+$light: (
+  'bg': #f4f5f7,
+  'surface': #ffffff,
+  'surface-2': #f8f9fb,
+  'surface-hover': #f1f3f6,
+  'border': #e4e7ec,
+  'border-strong': #cfd4dc,
+  'text': #101828,
+  'text-muted': #5b6678,
+  'text-faint': #8a94a6,
+  'primary': #2650d8,
+  'primary-hover': #1d41b8,
+  'primary-soft': #e8eefd,
+  'on-primary': #ffffff,
+  'success': #067647,
+  'success-soft': #e7f6ee,
+  'warning': #a15c07,
+  'warning-soft': #fdf3dc,
+  'danger': #c0261b,
+  'danger-soft': #fdeceb,
+  'info': #1d4fc4,
+  'info-soft': #e8eefd,
+  'violet': #5b3fc4,
+  'violet-soft': #efeafc,
+  'neutral': #475467,
+  'neutral-soft': #eceff3,
+  'overlay': rgba(16, 24, 40, 0.5),
+  'focus': #2650d8,
+  'sidebar-bg': #0f1b33,
+  'sidebar-text': #b6c0d4,
+  'sidebar-text-active': #ffffff,
+  'sidebar-active-bg': rgba(255, 255, 255, 0.09),
+  'sidebar-border': rgba(255, 255, 255, 0.08),
+  'shadow-sm': '0 1px 2px rgba(16, 24, 40, 0.06)',
+  'shadow-md': '0 4px 12px rgba(16, 24, 40, 0.1)',
+  'shadow-lg': '0 16px 40px rgba(16, 24, 40, 0.18)',
+);
+
+$dark: (
+  'bg': #0c1017,
+  'surface': #151b24,
+  'surface-2': #1a212c,
+  'surface-hover': #202836,
+  'border': #28313e,
+  'border-strong': #384455,
+  'text': #e7ecf3,
+  'text-muted': #9aa6b8,
+  'text-faint': #6f7c90,
+  'primary': #7b9bff,
+  'primary-hover': #9ab2ff,
+  'primary-soft': #1b2744,
+  'on-primary': #0c1017,
+  'success': #4cc38a,
+  'success-soft': #12271d,
+  'warning': #e2a63b,
+  'warning-soft': #2c2210,
+  'danger': #f0776d,
+  'danger-soft': #321816,
+  'info': #7b9bff,
+  'info-soft': #1b2744,
+  'violet': #a28bf0,
+  'violet-soft': #251f40,
+  'neutral': #a3aebf,
+  'neutral-soft': #232b37,
+  'overlay': rgba(0, 0, 0, 0.62),
+  'focus': #7b9bff,
+  'sidebar-bg': #0a0f19,
+  'sidebar-text': #9aa6b8,
+  'sidebar-text-active': #ffffff,
+  'sidebar-active-bg': rgba(255, 255, 255, 0.08),
+  'sidebar-border': rgba(255, 255, 255, 0.07),
+  'shadow-sm': '0 1px 2px rgba(0, 0, 0, 0.4)',
+  'shadow-md': '0 4px 12px rgba(0, 0, 0, 0.45)',
+  'shadow-lg': '0 16px 40px rgba(0, 0, 0, 0.55)',
+);
+
+// ── Scales ───────────────────────────────────────────────────────────────────
+$space: (1: 4px, 2: 8px, 3: 12px, 4: 16px, 5: 20px, 6: 24px, 8: 32px, 10: 40px, 12: 48px);
+$radius: (sm: 6px, md: 8px, lg: 12px, pill: 999px);
+$font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+$font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+$breakpoints: (sm: 600px, md: 900px, lg: 1200px);
+$sidebar-width: 248px;
+
+@function space($n) { @return map.get($space, $n); }
+@function radius($k) { @return map.get($radius, $k); }
