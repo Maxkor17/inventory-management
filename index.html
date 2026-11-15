@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inventory Management</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>IT Inventory</h1>
+    <div class="topbar-actions">
+      <button type="button" id="export-btn" class="btn btn-secondary">Export JSON</button>
+      <button type="button" id="import-btn" class="btn btn-secondary">Import JSON</button>
+      <input type="file" id="import-file" accept="application/json,.json" hidden>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+
+    <section class="stats" aria-label="Dashboard">
+      <div class="card stat">
+        <span class="stat-label">Total devices</span>
+        <span class="stat-value" id="stat-total">0</span>
+      </div>
+      <div class="card stat">
+        <span class="stat-label">Responsible specialists</span>
+        <span class="stat-value" id="stat-owners">0</span>
+      </div>
+      <div class="card stat">
+        <span class="stat-label">Unassigned devices</span>
+        <span class="stat-value" id="stat-unassigned">0</span>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="form-title">
+      <h2 id="form-title">Add device</h2>
+      <form id="device-form" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="f-name">Name *</label>
+            <input type="text" id="f-name" autocomplete="off" placeholder="Laptop">
+            <span class="error" id="e-name"></span>
+          </div>
+          <div class="field">
+            <label for="f-model">Model *</label>
+            <input type="text" id="f-model" autocomplete="off" placeholder="ThinkPad T14">
+            <span class="error" id="e-model"></span>
+          </div>
+          <div class="field">
+            <label for="f-serial">Serial number *</label>
+            <input type="text" id="f-serial" autocomplete="off" placeholder="SN-0001">
+            <span class="error" id="e-serial"></span>
+          </div>
+          <div class="field">
+            <label for="f-owner">Responsible specialist</label>
+            <input type="text" id="f-owner" autocomplete="off" placeholder="Leave empty if unassigned">
+            <span class="error" id="e-owner"></span>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="submit-btn">Add device</button>
+          <button type="button" class="btn btn-secondary" id="cancel-btn" hidden>Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card" aria-labelledby="list-title">
+      <div class="list-header">
+        <h2 id="list-title">Devices</h2>
+        <input type="search" id="search" placeholder="Search name, model, serial, specialist" aria-label="Search devices">
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Model</th>
+              <th>Serial number</th>
+              <th>Responsible</th>
+              <th class="col-actions">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="device-rows"></tbody>
+        </table>
+      </div>
+      <p class="empty" id="empty" hidden></p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
